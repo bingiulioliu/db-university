@@ -25,3 +25,17 @@ SELECT *
 FROM `courses`
 WHERE `courses`.`cfu` > 10;
 
+/*
+3. Selezionare tutti gli studenti che hanno più di 30 anni
+*/
+SELECT *
+FROM `students`
+WHERE YEAR(`students`.`date_of_birth`) < 1996;
+
+SELECT *
+FROM `students`
+WHERE TIMESTAMPDIFF(YEAR, `students`.`date_of_birth`, NOW()) > 30;
+
+SELECT *
+FROM `students`
+WHERE (YEAR(NOW()) - YEAR(`students`.`date_of_birth`)) > 30;
