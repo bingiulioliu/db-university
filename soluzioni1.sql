@@ -54,9 +54,11 @@ WHERE `courses`.`period` = 'I semestre';
 */
 SELECT *
 FROM `exams`
-WHERE `exams`.`hour` > '14:%';
+WHERE `exams`.`hour` > '14:%'
+	AND `exams`.`date` = '2020-06-20';
 
 SELECT *
 FROM `exams`
-WHERE HOUR(`exams`.`hour`) > 14;
+WHERE HOUR(`exams`.`hour`) > 14
+	AND `exams`.`date` = '2020-06-20';
 
