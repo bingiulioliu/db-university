@@ -21,3 +21,15 @@ from departments as dep
 		on dep.id = deg.department_id
 having dep.name = 'Dipartimento di Neuroscienze'
 	and deg.level = 'magistrale'
+
+/*
+3. Selezionare tutti i corsi in cui insegna Fulvio Amato (id=44)
+*/
+select *
+from teachers as t
+	join course_teacher as ct
+		on t.id = ct.teacher_id
+	join courses as c
+		on c.id = ct.course_id
+having t.id=44
+
