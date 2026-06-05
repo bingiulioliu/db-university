@@ -20,7 +20,7 @@ from departments as dep
 	join degrees as deg
 		on dep.id = deg.department_id
 having dep.name = 'Dipartimento di Neuroscienze'
-	and deg.level = 'magistrale'
+	and deg.level = 'magistrale';
 
 /*
 3. Selezionare tutti i corsi in cui insegna Fulvio Amato (id=44)
@@ -31,5 +31,18 @@ from teachers as t
 		on t.id = ct.teacher_id
 	join courses as c
 		on c.id = ct.course_id
-having t.id=44
+having t.id=44;
+
+/*
+4. Selezionare tutti gli studenti con i dati relativi al corso di laurea a cui
+sono iscritti e il relativo dipartimento, in ordine alfabetico per cognome e
+nome
+*/
+select s.*, dep.name, d.*
+from students as s
+	join degrees as d
+		on d.id = s.degree_id
+	join departments as dep
+		on dep.id = d.department_id
+order by s.name asc, s.surname asc;
 
