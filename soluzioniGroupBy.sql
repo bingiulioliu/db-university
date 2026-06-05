@@ -27,3 +27,11 @@ from exam_student as es
 		on c.id = e.course_id
 group by c.name;
 
+/*
+4. Contare quanti corsi di laurea ci sono per ogni dipartimento
+*/
+select dep.name, count(deg.name) as tot_corsi_laurea
+from departments as dep
+	join degrees as deg
+		on dep.id = deg.department_id
+group by dep.name;
