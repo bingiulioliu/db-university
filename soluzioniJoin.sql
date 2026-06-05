@@ -59,3 +59,20 @@ from teachers as t
 		on d.id = c.degree_id
 order by d.name;
 
+/*
+6. Selezionare tutti i docenti che insegnano nel Dipartimento di
+Matematica (54)
+*/
+select distinct t.*, d.name
+from departments as d
+	join degrees as deg
+		on deg.department_id = d.id
+	join courses as c
+		on deg.id = c.degree_id
+	join course_teacher as ct
+		on c.id = ct.course_id
+	join teachers as t
+		on t.id = ct.teacher_id
+where d.name = 'Dipartimento di Matematica'
+order by t.name, t.surname;
+
