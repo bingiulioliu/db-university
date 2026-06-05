@@ -76,3 +76,16 @@ from departments as d
 where d.name = 'Dipartimento di Matematica'
 order by t.name, t.surname;
 
+/*
+7. BONUS: Selezionare per ogni studente il numero di tentativi sostenuti
+per ogni esame, stampando anche il voto massimo. Successivamente,
+filtrare i tentativi con voto minimo 18.
+*/
+select s.id, s.name, s.surname, count(es.vote) as esami_totali, max(es.vote) as voto_massimo, min(es.vote) as voto_minimo
+from students as s
+	join exam_student as es
+		on s.id = es.student_id
+	join exams as e
+		on e.id = es.exam_id
+group by s.id, s.name, s.surname
+having min(es.vote) >= 18;
